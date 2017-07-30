@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="padding_texto">16dp</dimen>
     <dimen name="padding_titulo">16dp</dimen>
+
+    <dimen name="size_texto">20sp</dimen>
+    <dimen name="size_titulo">20sp</dimen>
+
 </resources>

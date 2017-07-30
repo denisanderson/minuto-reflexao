@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="MainActivity">
-
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:src="@drawable/fundo_nuvem"-->
-    <!--android:scaleType="centerCrop"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,13 +12,13 @@
 
         <TextView
             android:id="@+id/txt_titulo"
-            style="@style/EstiloTitulo"
+            style="@style/estilo_titulo"
             android:layout_weight="0"
             android:text="Titulo" />
 
         <TextView
             android:id="@+id/txt_texto"
-            style="@style/EstiloTexto"
+            style="@style/estilo_texto"
             android:layout_weight="1"
             android:text="Texto" />
 
@@ -33,11 +26,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_sorteia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@mipmap/ic_cached_black_24dp" />
+        style="@style/estilo_fab"
+        android:src="@mipmap/ic_cached_black_36dp" />
 
 </RelativeLayout>

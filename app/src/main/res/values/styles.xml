@@ -4,23 +4,34 @@
         <item name="colorAccent">@color/color_Accent</item>
         <item name="colorPrimary">@color/color_Primary</item>
         <item name="colorPrimaryDark">@color/color_PrimaryDark</item>
+        <item name="android:textColorPrimary">@android:color/primary_text_light</item>
     </style>
 
-    <style name="EstiloTexto">
+    <style name="estilo_texto">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:padding">@dimen/padding_texto</item>
+        <item name="android:textSize">@dimen/size_texto</item>
         <item name="android:background">@color/color_windowBackground</item>
     </style>
 
-    <style name="EstiloTitulo">
+    <style name="estilo_titulo">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:padding">@dimen/padding_titulo</item>
+        <item name="android:textSize">@dimen/size_titulo</item>
         <item name="android:background">@color/color_windowBackground</item>
+    </style>
+
+    <style name="estilo_fab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
     </style>
 
 </resources>
