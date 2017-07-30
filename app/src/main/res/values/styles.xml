@@ -16,7 +16,7 @@
         <item name="android:padding">@dimen/padding_titulo</item>
         <item name="android:textSize">@dimen/size_titulo</item>
         <item name="android:textColor">@color/color_textDarkPrimary</item>
-        <item name="android:background">@color/color_background</item>
+
     </style>
 
     <style name="estilo_texto">
@@ -26,7 +26,6 @@
         <item name="android:padding">@dimen/padding_texto</item>
         <item name="android:textSize">@dimen/size_texto</item>
         <item name="android:textColor">@color/color_textDarkPrimary</item>
-        <item name="android:background">@color/color_background</item>
     </style>
 
     <style name="estilo_autor">
@@ -37,7 +36,6 @@
         <item name="android:textSize">@dimen/size_texto</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/color_textDarkSecondary</item>
-        <item name="android:background">@color/color_background</item>
     </style>
 
     <style name="estilo_fab">
@@ -45,7 +43,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_alignParentRight">true</item>
-        <!--<item name="android:layout_centerHorizontal">true</item>-->
         <item name="android:layout_margin">@dimen/fab_margin</item>
     </style>
 
