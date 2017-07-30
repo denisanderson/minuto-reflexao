@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_Primary">#00BCD4</color>
-    <color name="color_PrimaryDark">#00838F</color>
-    <color name="color_Accent">#00BCD4</color>
-    <color name="color_windowBackground">#E0F7FA</color>
+
+    <color name="color_primary">#00BCD4</color>
+    <color name="color_primaryDark">#00838F</color>
+    <color name="color_accent">#00BCD4</color>
+    <color name="color_background">#E0F7FA</color>
+
+    <!-- Dark Text Color for Light Background -->
+    <color name="color_textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
+    <color name="color_textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
+    <color name="color_textDarkDisabled">#61000000</color> <!--61 for %38 opacity-->
+
 </resources>

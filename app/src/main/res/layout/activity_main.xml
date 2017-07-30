@@ -22,11 +22,17 @@
             android:layout_weight="1"
             android:text="Texto" />
 
+        <TextView
+            android:id="@+id/txt_autor"
+            style="@style/estilo_autor"
+            android:layout_weight="0"
+            android:text="Autor" />
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_sorteia"
         style="@style/estilo_fab"
-        android:src="@mipmap/ic_cached_black_36dp" />
+        android:src="@mipmap/ic_cached_black_24dp" />
 
 </RelativeLayout>
