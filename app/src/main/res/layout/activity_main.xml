@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,6 +35,8 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_sorteia"
         style="@style/estilo_fab"
-        android:src="@mipmap/ic_cached_black_24dp" />
+        android:background="?attr/selectableItemBackground"
+        android:src="@mipmap/ic_cached_black_36dp"
+        app:fabSize="normal" />
 
 </RelativeLayout>
