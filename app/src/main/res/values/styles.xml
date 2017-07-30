@@ -5,7 +5,6 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primaryDark</item>
-        <item name="android:textColorPrimary">@android:color/primary_text_light</item>
     </style>
 
     <style name="estilo_titulo">
@@ -44,6 +43,8 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_margin">@dimen/fab_margin</item>
+        <!-- Atributo para dar o efeito de botão pressionado -->
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
 </resources>

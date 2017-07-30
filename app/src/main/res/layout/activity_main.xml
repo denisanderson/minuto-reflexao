@@ -35,7 +35,6 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_sorteia"
         style="@style/estilo_fab"
-        android:background="?attr/selectableItemBackground"
         android:src="@mipmap/ic_cached_black_36dp"
         app:fabSize="normal" />
 
