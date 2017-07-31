@@ -3,9 +3,18 @@ package com.denis.minutodereflexao.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 
 public class MrDbHelper extends SQLiteOpenHelper {
 
+    // Constantes para schema da tabela MENSAGEM
+    public static final String TABELA_MENSAGEM = "mensagem";
+    public static final String COLUNA_ID = BaseColumns._ID;
+    public static final String COLUNA_TITULO = "titulo";
+    public static final String COLUNA_TEXTO = "texto";
+    public static final String COLUNA_AUTOR = "autor";
+    // Constante para uso nas mensagens de log para facilitar localização
+    private final static String LOG_TAG = "MR_DbHelper";
     private static final String DATABASE_NAME = "mr.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -13,13 +22,8 @@ public class MrDbHelper extends SQLiteOpenHelper {
      * Create a helper object to create, open, and/or manage a database.
      *
      * @param context to use to open or create the database
-     * @param name    of the database file, or null for an in-memory database
-     * @param factory to use for creating cursor objects, or null for the default
-     * @param version number of the database (starting at 1); if the database is older,
-     *                {@link #onUpgrade} will be used to upgrade the database; if the database is
-     *                newer, {@link #onDowngrade} will be used to downgrade the database
      */
-    public MrDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public MrDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
