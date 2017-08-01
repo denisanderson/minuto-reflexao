@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.denis.minutodereflexao.data.MrDbHelper;
-
 import java.util.Arrays;
 
 import static java.lang.String.valueOf;

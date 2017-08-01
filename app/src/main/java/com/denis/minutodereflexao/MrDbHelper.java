@@ -1,4 +1,4 @@
-package com.denis.minutodereflexao.data;
+package com.denis.minutodereflexao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +15,7 @@ public class MrDbHelper extends SQLiteOpenHelper {
     public static final String COLUNA_AUTOR = "autor";
     // Constante para uso nas mensagens de log para facilitar localização
     private final static String LOG_TAG = "MR_DbHelper";
-    private static final String DATABASE_NAME = "mr.db";
+    private static final String DATABASE_NAME = "databases/mr.db";
     private static final int DATABASE_VERSION = 1;
 
     /**
