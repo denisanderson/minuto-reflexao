@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i(LOG_TAG, "Executa getMensagemAleatoria()");
         mCursor = mDbAccess.getMensagemAleatoria();
-        mCursor.moveToFirst();
 
+        mCursor.moveToFirst();
         Log.i(LOG_TAG, "ID Anterior: " + intIdAnterior + " - ID Atual: " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
         int intIdAtual = mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID));
         if (intIdAtual == intIdAnterior) {
-            Log.i(LOG_TAG, "Executa  novamente getMensagemAleatoria()");
+            Log.i(LOG_TAG, "Executa  Novamente getMensagemAleatoria()");
             mCursor = mDbAccess.getMensagemAleatoria();
             mCursor.moveToFirst();
         }
