@@ -1,4 +1,6 @@
 <resources>
     <!-- Nome do app -->
     <string name="app_name">Minuto de Reflexão</string>
+    <!-- Mensagem de boas vindas -->
+    <string name="bem_vindo">Pressione o botão abaixo para nova mensagem. \n\nBoa Reflexão!</string>
 </resources>

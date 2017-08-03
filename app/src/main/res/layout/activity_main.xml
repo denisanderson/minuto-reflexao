@@ -16,19 +16,17 @@
             android:id="@+id/txt_titulo"
             style="@style/estilo_titulo"
             android:layout_weight="0"
-            android:text="Titulo" />
+            android:text="@string/bem_vindo"/>
 
         <TextView
             android:id="@+id/txt_texto"
             style="@style/estilo_texto"
-            android:layout_weight="1"
-            android:text="Texto" />
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/txt_autor"
             style="@style/estilo_autor"
-            android:layout_weight="0"
-            android:text="Autor" />
+            android:layout_weight="0" />
 
     </LinearLayout>
 
