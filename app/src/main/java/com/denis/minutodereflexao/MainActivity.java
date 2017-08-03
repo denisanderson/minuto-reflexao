@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mTxtTexto;
     TextView mTxtAutor;
     Cursor mCursor;
+    int intIdAnterior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         mTxtTexto = (TextView) findViewById(R.id.txt_texto);
         mTxtAutor = (TextView) findViewById(R.id.txt_autor);
 
+        intIdAnterior = 0;
+
     }
 
     private void sorteiaMensagem() {
@@ -48,17 +51,20 @@ public class MainActivity extends AppCompatActivity {
         mCursor = mDbAccess.getMensagemAleatoria();
         mCursor.moveToFirst();
 
-        Log.i(LOG_TAG,"ID: " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
+        Log.i(LOG_TAG, "ID Anterior: " + intIdAnterior + " - ID Atual: " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
+        int intIdAtual = mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID));
+        if (intIdAtual == intIdAnterior) {
+            Log.i(LOG_TAG, "Executa  novamente getMensagemAleatoria()");
+            mCursor = mDbAccess.getMensagemAleatoria();
+            mCursor.moveToFirst();
+        }
 
         // Coloca o resultado na tela
         Log.i(LOG_TAG, "Titulo: " + mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
         mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
-
-        Log.i(LOG_TAG, "Texto inserido");
         mTxtTexto.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TEXTO)));
-
-        Log.i(LOG_TAG, "Autor: " + mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
         mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+        intIdAnterior = intIdAtual;
 
         Log.i(LOG_TAG, "Fecha conexão com o banco");
         mDbAccess.close();

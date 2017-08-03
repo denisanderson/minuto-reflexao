@@ -98,7 +98,7 @@ public class DbAccess {
         String strLimit = "1";
 
         try {
-            Log.i(LOG_TAG, "Query Mensagem Aleatoria");
+            Log.i(LOG_TAG, "Query Mensagem Aleatoria iniciou");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
                     null, // Criterios de pesquisa WHERE
@@ -110,6 +110,7 @@ public class DbAccess {
         } catch (Exception e) {
             Log.i(LOG_TAG, e.getMessage());
         } finally {
+            Log.i(LOG_TAG, "Query Mensagem Aleatoria terminou");
             return mCursor;
         }
     }
