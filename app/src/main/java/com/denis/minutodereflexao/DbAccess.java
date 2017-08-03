@@ -3,15 +3,18 @@ package com.denis.minutodereflexao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 import android.util.Log;
 
 public class DbAccess {
 
     // Constantes para schema da tabela MENSAGEM
     public static final String TABELA_MENSAGEM = "mensagem";
+    public static final String COLUNA_ID = BaseColumns._ID;
     public static final String COLUNA_TITULO = "titulo";
     public static final String COLUNA_TEXTO = "texto";
     public static final String COLUNA_AUTOR = "autor";
+    public static final String[] PROJECTION_TODAS_COLUNAS = {COLUNA_ID, COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
 
     private final static String LOG_TAG = "DbAccess";
     private static DbAccess instance;
@@ -68,16 +71,17 @@ public class DbAccess {
      */
     public Cursor getTodasMensagens() {
 
-        String[] strProjection = {COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
         try {
             Log.i(LOG_TAG, "Query Todas as mensagens");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
-                    strProjection, // campos para pesquisa. NULL = *
+                    PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
                     null, // Criterios de pesquisa WHERE
                     null, // argumentos do WHERE
                     null, // Group By
                     null, // Having
                     null); // Order By
+        } catch (Exception e) {
+            Log.i(LOG_TAG, e.getMessage());
         } finally {
             return mCursor;
         }
@@ -90,20 +94,21 @@ public class DbAccess {
      */
     public Cursor getMensagemAleatoria() {
 
-        String[] strProjection = {COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
         String strOrderBy = "RANDOM()";
         String strLimit = "1";
 
         try {
-            Log.i(LOG_TAG, "Query Todas as mensagens");
+            Log.i(LOG_TAG, "Query Mensagem Aleatoria");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
-                    strProjection, // campos para pesquisa. NULL = *
+                    PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
                     null, // Criterios de pesquisa WHERE
                     null, // argumentos do WHERE
                     null, // Group By
                     null, // Having
                     strOrderBy, // Order By
                     strLimit); // Limit
+        } catch (Exception e) {
+            Log.i(LOG_TAG, e.getMessage());
         } finally {
             return mCursor;
         }

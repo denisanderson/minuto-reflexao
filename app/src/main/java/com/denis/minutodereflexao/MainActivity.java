@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         mCursor = mDbAccess.getMensagemAleatoria();
         mCursor.moveToFirst();
 
+        Log.i(LOG_TAG,"ID: " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
+
         // Coloca o resultado na tela
         Log.i(LOG_TAG, "Titulo: " + mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
         mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
