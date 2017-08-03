@@ -4,19 +4,19 @@ import android.database.Cursor;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.denis.minutodereflexao.DbAccess;
 
 public class MainActivity extends AppCompatActivity {
 
     // Constante para uso nas mensagens de log para facilitar localização
     private final static String LOG_TAG = "Main";
-
     TextView mTxtTitulo;
     TextView mTxtTexto;
     TextView mTxtAutor;
+    Cursor mCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btnSorteia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Sorteia nova mensagem", Toast.LENGTH_SHORT).show();
+                sorteiaMensagem();
             }
         });
 
@@ -36,11 +36,30 @@ public class MainActivity extends AppCompatActivity {
         mTxtTexto = (TextView) findViewById(R.id.txt_texto);
         mTxtAutor = (TextView) findViewById(R.id.txt_autor);
 
-        DbAccess mDbAccess=DbAccess.getInstance(this);
+    }
+
+    private void sorteiaMensagem() {
+
+        DbAccess mDbAccess = DbAccess.getInstance(this);
+        Log.i(LOG_TAG, "Conecta no banco");
         mDbAccess.open();
-        Cursor cursor=mDbAccess.getTodasMensagens();
+
+        Log.i(LOG_TAG, "Executa getMensagemAleatoria()");
+        mCursor = mDbAccess.getMensagemAleatoria();
+        mCursor.moveToFirst();
+
+        // Coloca o resultado na tela
+        Log.i(LOG_TAG, "Titulo: " + mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
+        mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
+
+        Log.i(LOG_TAG, "Texto inserido");
+        mTxtTexto.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TEXTO)));
+
+        Log.i(LOG_TAG, "Autor: " + mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+        mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+
+        Log.i(LOG_TAG, "Fecha conexão com o banco");
         mDbAccess.close();
 
     }
-
 }

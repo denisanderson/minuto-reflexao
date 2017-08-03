@@ -12,6 +12,7 @@ public class DbAccess {
     public static final String COLUNA_TITULO = "titulo";
     public static final String COLUNA_TEXTO = "texto";
     public static final String COLUNA_AUTOR = "autor";
+
     private final static String LOG_TAG = "DbAccess";
     private static DbAccess instance;
     private DbHelper mDbHelper;
@@ -19,54 +20,57 @@ public class DbAccess {
     private Cursor mCursor;
 
     /**
-     * Private constructor to aboid object creation from outside classes.
+     * Construtor da classe
+     *
      * @param context
      */
     private DbAccess(Context context) {
-        Log.i(LOG_TAG,"Executa contrutor DbAccess");
+        Log.i(LOG_TAG, "Executa contrutor DbAccess");
         mDbHelper = new DbHelper(context);
     }
 
     /**
-     * Return a singleton instance of DatabaseAccess.
-     * @param context the Context
-     * @return the instance of DabaseAccess
+     * Retorna uma instância de DbAccess.
+     *
+     * @param context Contexto da chamada da função
+     * @return Instância de DbAccess
      */
     public static DbAccess getInstance(Context context) {
         if (instance == null) {
             instance = new DbAccess(context);
         }
-        Log.i(LOG_TAG,"getInstance");
+        Log.i(LOG_TAG, "getInstance");
         return instance;
     }
 
     /**
-     * Open the database connection.
+     * Abre uma conexão com o banco de dados
      */
     public void open() {
-        Log.i(LOG_TAG,"getReadableDatabase()");
+        Log.i(LOG_TAG, "getReadableDatabase()");
         mDatabase = mDbHelper.getReadableDatabase();
     }
 
     /**
-     * Close the database connection.
+     * Fecha a conexão com o banco de dados
      */
     public void close() {
         if (mDatabase != null) {
-            Log.i(LOG_TAG,"closeDatabase");
+            Log.i(LOG_TAG, "closeDatabase");
             mDatabase.close();
         }
     }
 
     /**
-     * Read all data from the table.
-     * @return a cursor
+     * Consulta todos os dados das colunas especificadas em strProjetion
+     *
+     * @return Um cursor com o resultado
      */
-    public Cursor getTodasMensagens(){
+    public Cursor getTodasMensagens() {
 
-        String[] strProjection = {COLUNA_TITULO,COLUNA_TEXTO,COLUNA_AUTOR};
+        String[] strProjection = {COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
         try {
-            Log.i(LOG_TAG,"Query Todas as mensagens");
+            Log.i(LOG_TAG, "Query Todas as mensagens");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     strProjection, // campos para pesquisa. NULL = *
                     null, // Criterios de pesquisa WHERE
@@ -80,17 +84,18 @@ public class DbAccess {
     }
 
     /**
-     * Read all data from the table.
-     * @return a cursor
+     * Consulta aleatória na tabela. Returna 1 resultado.
+     *
+     * @return Um cursor com o resultado
      */
-    public Cursor getMensagemAleatoria(){
+    public Cursor getMensagemAleatoria() {
 
-        String[] strProjection = {COLUNA_TITULO,COLUNA_TEXTO,COLUNA_AUTOR};
+        String[] strProjection = {COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
         String strOrderBy = "RANDOM()";
-        String strLimit="1";
+        String strLimit = "1";
 
         try {
-            Log.i(LOG_TAG,"Query Todas as mensagens");
+            Log.i(LOG_TAG, "Query Todas as mensagens");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     strProjection, // campos para pesquisa. NULL = *
                     null, // Criterios de pesquisa WHERE
