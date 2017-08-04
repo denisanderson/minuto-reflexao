@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_primary">#00BCD4</color>
-    <color name="color_primaryDark">#00838F</color>
-    <color name="color_accent">#00BCD4</color>
+    <color name="color_primary">#4DD0E1</color>
+    <color name="color_primaryDark">#00BCD4</color>
+    <color name="color_accent">#4DD0E1</color>
     <color name="color_background">#E0F7FA</color>
 
     <color name="color_textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
