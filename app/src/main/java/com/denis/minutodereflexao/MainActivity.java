@@ -12,7 +12,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     // Constante para uso nas mensagens de log para facilitar localização
-    private final static String LOG_TAG = "Main";
+    private final static String LOG_TAG = "MainActivity";
+
     TextView mTxtTitulo;
     TextView mTxtTexto;
     TextView mTxtAutor;
@@ -39,13 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
         intIdAnterior = 0;
 
+//        DbAccess mDbAccess=DbAccess.getInstance(this);
+//        mDbAccess.openWrite();
+//        mDbAccess.close();
+
     }
 
     private void sorteiaMensagem() {
 
         DbAccess mDbAccess = DbAccess.getInstance(this);
         Log.i(LOG_TAG, "Conecta no banco");
-        mDbAccess.open();
+        mDbAccess.openRead();
 
         Log.i(LOG_TAG, "Executa getMensagemAleatoria()");
         mCursor = mDbAccess.getMensagemAleatoria();

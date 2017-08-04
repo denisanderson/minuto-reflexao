@@ -6,10 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.provider.BaseColumns;
 import android.util.Log;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import static com.denis.minutodereflexao.DbHelper.DATABASE_NAME;
 import static com.denis.minutodereflexao.DbHelper.DATABASE_PATH;
 
@@ -28,7 +30,6 @@ public class DbAccess {
     private DbHelper mDbHelper;
     private SQLiteDatabase mDatabase;
     private Cursor mCursor;
-    private Context mContext;
 
     /**
      * Construtor da classe
@@ -57,9 +58,17 @@ public class DbAccess {
     /**
      * Abre uma conexão com o banco de dados
      */
-    public void open() {
+    public void openRead() {
         Log.i(LOG_TAG, "getReadableDatabase()");
         mDatabase = mDbHelper.getReadableDatabase();
+    }
+
+    /**
+     * Abre uma conexão com o banco de dados
+     */
+    public void openWrite() {
+        Log.i(LOG_TAG, "getWritableDatabase()");
+        mDatabase = mDbHelper.getWritableDatabase();
     }
 
     /**
@@ -125,35 +134,49 @@ public class DbAccess {
 
     /**
      * Check if the database already exist to avoid re-copying the file each time you open the application.
+     *
      * @return true if it exists, false if it doesn't
      */
-    private boolean checkDataBase(){
+    public boolean checkDataBase() {
+        String mPath;
         SQLiteDatabase checkDB = null;
-        try{
-            String mPath = DATABASE_PATH + DATABASE_NAME;
+        try {
+            mPath = DATABASE_PATH + DATABASE_NAME;
             checkDB = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.OPEN_READONLY);
-        }catch(SQLiteException e){
-            //database does't exist yet.
+            if (checkDB != null) {
+                Log.i(LOG_TAG, "Banco de dados EXISTE: " + mPath);
+            }
+        } catch (SQLiteException e) {
+            Log.i(LOG_TAG, "Banco de dados NÃO existe. " + e.getMessage());
         }
-        if(checkDB != null){
+        if (checkDB != null) {
             checkDB.close();
         }
         return checkDB != null ? true : false;
     }
 
-    // Copies DB from assests
-    private void copyDataBase() throws IOException {
-        InputStream mInput = mContext.getAssets().open(DATABASE_NAME);
-        String outFileName = DATABASE_PATH + DATABASE_NAME;
-        OutputStream mOutput = new FileOutputStream(outFileName);
-        byte[] mBuffer = new byte[1024];
-        int mLength;
-        while ((mLength = mInput.read(mBuffer)) > 0) {
-            mOutput.write(mBuffer, 0, mLength);
+    /**
+     * Copia Banco de Dados da pasta assets/databases
+     */
+    public void copiaDatabase(Context context) {
+        try {
+            //Context mContext = MyApp.getAppContext();
+            InputStream mInput = context.getAssets().open(DATABASE_NAME);
+            String outFileName = DATABASE_PATH + DATABASE_NAME;
+            OutputStream mOutput = new FileOutputStream(outFileName);
+            byte[] mBuffer = new byte[1024];
+            int mLength;
+            while ((mLength = mInput.read(mBuffer)) > 0) {
+                mOutput.write(mBuffer, 0, mLength);
+            }
+            mOutput.flush();
+            mOutput.close();
+            mInput.close();
+            Log.i(LOG_TAG, "Cópia do arquivo concluída");
+        } catch (IOException e) {
+            Log.i(LOG_TAG, "Erro copiando o arquivo de banco de dados: " + e.getCause());
+            throw new Error("Ocorreu um erro copiando o arquivo de banco de dados: " + e.getMessage());
         }
-        mOutput.flush();
-        mOutput.close();
-        mInput.close();
     }
 
 }
