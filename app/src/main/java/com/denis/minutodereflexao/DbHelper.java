@@ -4,18 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class DbHelper extends SQLiteAssetHelper {
 
+    public static final String DATABASE_PATH="/data/data/com.denis.minutodereflexao/databases/";
+    public static final String DATABASE_NAME = "mr.db";
+    public static final int DATABASE_VERSION = 1;
     private final static String LOG_TAG = "DbHelper";
-    private static final String DATABASE_PATH="/data/data/com.denis.minutodereflexao/databases/";
-    private static final String DATABASE_NAME = "mr.db";
-    private static final int DATABASE_VERSION = 1;
-    private Context mContext;
 
     /**
      * Create a helper object to create, open, and/or manage a database.
@@ -36,20 +31,5 @@ public class DbHelper extends SQLiteAssetHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    // Copies DB from assests
-    private void copyDataBase() throws IOException {
-        InputStream mInput = mContext.getAssets().open(DATABASE_NAME);
-        String outFileName = DATABASE_PATH + DATABASE_NAME;
-        OutputStream mOutput = new FileOutputStream(outFileName);
-        byte[] mBuffer = new byte[1024];
-        int mLength;
-        while ((mLength = mInput.read(mBuffer)) > 0) {
-            mOutput.write(mBuffer, 0, mLength);
-        }
-        mOutput.flush();
-        mOutput.close();
-        mInput.close();
     }
 }
