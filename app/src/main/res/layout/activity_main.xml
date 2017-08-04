@@ -33,7 +33,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_sorteia"
         style="@style/estilo_fab"
-        android:src="@mipmap/ic_cached_black_36dp"
+        android:src="@mipmap/ic_book_open_page_black_24dp"
         app:fabSize="normal" />
 
 </RelativeLayout>
