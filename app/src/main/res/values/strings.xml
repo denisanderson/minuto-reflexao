@@ -3,4 +3,6 @@
     <string name="app_name">Minuto de Reflexão</string>
     <!-- Mensagem de boas vindas -->
     <string name="bem_vindo">Pressione o botão abaixo para nova mensagem. \n\nBoa Reflexão!</string>
+    <!--Nome da preferencia que guarda o valor do banco de dados-->
+    <string name="shared_prefs_db_version">DB_VERSION</string>
 </resources>
