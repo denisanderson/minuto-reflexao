@@ -24,7 +24,7 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:padding">@dimen/padding_texto</item>
         <item name="android:textSize">@dimen/size_texto</item>
-        <item name="android:textColor">@color/color_textDarkPrimary</item>
+        <item name="android:textColor">@color/color_textDarkSecondary</item>
     </style>
 
     <style name="estilo_autor">
