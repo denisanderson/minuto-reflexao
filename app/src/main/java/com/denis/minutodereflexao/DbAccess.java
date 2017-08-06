@@ -6,12 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.provider.BaseColumns;
 import android.util.Log;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import static com.denis.minutodereflexao.DbHelper.DATABASE_NAME;
 import static com.denis.minutodereflexao.DbHelper.DATABASE_PATH;
 
@@ -160,7 +158,6 @@ public class DbAccess {
      */
     public void copiaDatabase(Context context) {
         try {
-            //Context mContext = MyApp.getAppContext();
             InputStream mInput = context.getAssets().open(DATABASE_NAME);
             String outFileName = DATABASE_PATH + DATABASE_NAME;
             OutputStream mOutput = new FileOutputStream(outFileName);
