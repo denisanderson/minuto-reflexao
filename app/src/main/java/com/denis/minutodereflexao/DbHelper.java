@@ -9,7 +9,7 @@ public class DbHelper extends SQLiteAssetHelper {
 
     public static final String DATABASE_PATH = "/data/data/com.denis.minutodereflexao/databases/";
     public static final String DATABASE_NAME = "mr.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 1;
     private final static String LOG_TAG = "DbHelper";
     private Context mContext;
 
