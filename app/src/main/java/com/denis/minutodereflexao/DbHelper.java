@@ -3,7 +3,6 @@ package com.denis.minutodereflexao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 

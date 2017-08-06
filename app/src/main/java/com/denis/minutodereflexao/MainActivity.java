@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         intIdAnterior = 0;
 
-//        DbAccess mDbAccess=DbAccess.getInstance(this);
-//        mDbAccess.openWrite();
-//        mDbAccess.close();
-
     }
 
     private void sorteiaMensagem() {
