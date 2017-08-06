@@ -1,6 +1,7 @@
 package com.denis.minutodereflexao;
 
 import android.database.Cursor;
+import android.database.SQLException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +45,21 @@ public class MainActivity extends AppCompatActivity {
 
         intIdAnterior = 0;
 
+        apagaDatabase();
+    }
+
+    private void apagaDatabase() {
+        DbAccess mDbAccess = DbAccess.getInstance(this);
+        if (mDbAccess.checkDataBase()) {
+            Log.i(LOG_TAG, "DB encontrado. Apagando arquivo...");
+            try {
+                this.deleteDatabase(DbHelper.DATABASE_NAME);
+            } catch (SQLException e) {
+                Log.i(LOG_TAG, e.getMessage());
+            }
+        } else {
+            Log.i(LOG_TAG, "Banco de dados não encontrado");
+        }
     }
 
     private void sorteiaMensagem() {

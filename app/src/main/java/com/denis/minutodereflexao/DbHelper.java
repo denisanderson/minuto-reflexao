@@ -35,8 +35,6 @@ public class DbHelper extends SQLiteAssetHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        Log.i(LOG_TAG, "Executa onUpgrade(). Versão anterior: " + oldVersion + ". Nova versão: " + newVersion);
-//        DbAccess mDbAccess = DbAccess.getInstance(mContext);
-//        mDbAccess.copiaDatabase(mContext);
+
     }
 }
