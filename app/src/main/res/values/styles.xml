@@ -33,9 +33,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
         <item name="android:padding">@dimen/padding_texto</item>
-        <item name="android:textSize">@dimen/size_texto</item>
+        <item name="android:textSize">@dimen/size_autor</item>
         <item name="android:textStyle">italic</item>
-        <item name="android:textColor">@color/color_textDarkSecondary</item>
+        <item name="android:textColor">@color/color_textLight</item>
     </style>
 
     <style name="estilo_fab">

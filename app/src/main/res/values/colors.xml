@@ -9,5 +9,6 @@
     <color name="color_textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
     <color name="color_textDarkSecondary">#8A000000</color> <!--8A for %54 opacity-->
     <color name="color_textDarkDisabled">#61000000</color> <!--61 for %38 opacity-->
+    <color name="color_textLight">#B2EBF2</color>
 
 </resources>
