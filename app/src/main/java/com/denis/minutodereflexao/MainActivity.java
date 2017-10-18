@@ -69,6 +69,20 @@ public class MainActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.menu_share);
         // Fetch and store ShareActionProvider
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        // Cria Listener para o evento
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent sendIntent = new Intent();
+                setShareIntent(sendIntent);
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.setType("text/plain");
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, mTxtTitulo.getText());
+                sendIntent.putExtra(Intent.EXTRA_TEXT, mTxtTexto.getText());
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+                return true;
+            }
+        });
         // Return true to display menu
         return true;
     }
@@ -91,18 +105,18 @@ public class MainActivity extends AppCompatActivity {
         if (dbVersion != DbHelper.DATABASE_VERSION) {
             Log.i(LOG_TAG, "PREFS. " + dbVersion + " DATABASE_VERSION " + DbHelper.DATABASE_VERSION);
             apagaDatabase();
-            atualizaSharedPrefs(sharedPref,DbHelper.DATABASE_VERSION);
+            atualizaSharedPrefs(sharedPref, DbHelper.DATABASE_VERSION);
         }
     }
 
     /**
      * Atualiza SharedPreferences com o valor da versão atual do banco de dados
      *
-     * @param sharedPref Objeto sharedPreferences aberto para leitura
+     * @param sharedPref      Objeto sharedPreferences aberto para leitura
      * @param databaseVersion Versão do banco de dados para escrever na Preferencia
      */
     private void atualizaSharedPrefs(SharedPreferences sharedPref, int databaseVersion) {
-        SharedPreferences.Editor mEditor= sharedPref.edit();
+        SharedPreferences.Editor mEditor = sharedPref.edit();
         mEditor.putInt(getString(R.string.shared_prefs_db_version), databaseVersion);
         mEditor.commit();
     }
