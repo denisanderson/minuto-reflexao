@@ -10,11 +10,17 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ShareActionProvider;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                if (TextUtils.isEmpty(mTxtTexto.getText().toString())) {
+                    Toast toast = Toast.makeText(MainActivity.this, R.string.toast_sem_msg, Toast.LENGTH_SHORT);
+                    LinearLayout layout = (LinearLayout) toast.getView();
+                    if (layout.getChildCount() > 0) {
+                        TextView tv = (TextView) layout.getChildAt(0);
+                        tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                    }
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    return false;
+                }
                 Intent sendIntent = new Intent();
                 setShareIntent(sendIntent);
                 sendIntent.setAction(Intent.ACTION_SEND);
