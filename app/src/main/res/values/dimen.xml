@@ -7,6 +7,6 @@
 
     <dimen name="size_texto">18sp</dimen>
     <dimen name="size_titulo">20sp</dimen>
-    <dimen name="size_autor">16sp</dimen>
+    <dimen name="size_autor">14sp</dimen>
 
 </resources>
