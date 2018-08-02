@@ -1,5 +1,6 @@
 package com.denis.minutodereflexao;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -7,9 +8,10 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DbHelper extends SQLiteAssetHelper {
 
+    @SuppressLint("SdCardPath")
     public static final String DATABASE_PATH = "/data/data/com.denis.minutodereflexao/databases/";
     public static final String DATABASE_NAME = "mr.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     private final static String LOG_TAG = "DbHelper";
     private Context mContext;
 
