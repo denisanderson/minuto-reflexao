@@ -7,4 +7,6 @@
     <string name="shared_prefs_db_version">DB_VERSION</string>
     <string name="send_to">Compartilhar Via</string>
     <string name="toast_sem_msg">Não há mensagem na tela para compartilhar</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
