@@ -3,10 +3,12 @@
 
     <item
         android:id="@+id/nav_home"
-        android:title="Principal" />
+        android:icon="@mipmap/baseline_home_black_24"
+        android:title="@string/menu_home" />
 
     <item
         android:id="@+id/nav_favorito"
-        android:title="Favoritas" />
+        android:icon="@mipmap/baseline_favorite_black_24"
+        android:title="@string/menu_favorita" />
 
 </menu>

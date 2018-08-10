@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ShareActionProvider mShareActionProvider;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    boolean mFavChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,15 +71,6 @@ public class MainActivity extends AppCompatActivity {
         // precisa ser atualizado no aparelho
         verificaDbUpdate();
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (mToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -123,6 +115,45 @@ public class MainActivity extends AppCompatActivity {
         });
         // Return true to display menu
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            // Botão Favorito é clicado
+            case R.id.menu_favorito:
+                if (mFavChecked) {
+                    Toast toast = Toast.makeText(MainActivity.this, "CHECKED -> UNCHECKED", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    item.setIcon(R.drawable.ic_favorite_unchecked_white_24dp);
+                    mFavChecked = false;
+                }else {
+                    if (TextUtils.isEmpty(mTxtTexto.getText().toString())) {
+                        Toast toast = Toast.makeText(MainActivity.this, R.string.toast_sem_msg, Toast.LENGTH_SHORT);
+                        LinearLayout layout = (LinearLayout) toast.getView();
+                        if (layout.getChildCount() > 0) {
+                            TextView tv = (TextView) layout.getChildAt(0);
+                            tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                        }
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        return false;
+                    }else {
+                        Toast toast = Toast.makeText(MainActivity.this, "UNCHECKED -> CHECKED", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        item.setIcon(R.drawable.ic_favorite_checked_white_24dp);
+                        mFavChecked=true;}
+                }
+                return true;
+        }
+
+        if (mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // Call to update the share intent

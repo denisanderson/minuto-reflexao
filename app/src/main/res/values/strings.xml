@@ -9,4 +9,8 @@
     <string name="toast_sem_msg">Não há mensagem na tela para compartilhar</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="action_share">Share</string>
+    <string name="action_favorito">Favorito</string>
+    <string name="menu_home">Início</string>
+    <string name="menu_favorita">Mensagens Favoritas</string>
 </resources>

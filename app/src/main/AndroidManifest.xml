@@ -15,6 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--
+        Habilitar somente quando a tela para ler as msgs favoritas for criada
+        <activity android:name="MsgFavoritas"
+            android:parentActivityName=".MainActivity">
+            <meta-data>
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+            </meta-data>
+        </activity>
+-->
     </application>
 
 </manifest>
