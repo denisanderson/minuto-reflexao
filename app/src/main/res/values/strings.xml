@@ -1,16 +1,29 @@
 <resources>
     <!-- Nome do app -->
     <string name="app_name">Minuto de Reflexão</string>
+
     <!-- Mensagem de boas vindas -->
     <string name="bem_vindo">Pressione o botão abaixo para nova mensagem. \n\nBoa Reflexão!</string>
+
     <!--Nome da preferencia que guarda o valor do banco de dados-->
     <string name="shared_prefs_db_version">DB_VERSION</string>
+
     <string name="send_to">Compartilhar Via</string>
-    <string name="toast_sem_msg">Não há mensagem na tela para compartilhar</string>
+
+    <!--Texto da mensagem Toast quando tentar ação e não há mensagem na tela-->
+    <string name="toast_sem_msg_share">Não há mensagem na tela para compartilhar</string>
+    <string name="toast_sem_msg_favorita">Não há mensagem na tela para favoritar</string>
+
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="action_share">Share</string>
     <string name="action_favorito">Favorito</string>
+
+    <!--Texto das opções do menu lateral-->
     <string name="menu_home">Início</string>
     <string name="menu_favorita">Mensagens Favoritas</string>
+
+    <!--Texto da mensagem Toast quando apertar no botão de favoritos-->
+    <string name="toast_msg_add_favorita">Incluída nas Favoritas</string>
+    <string name="toast_msg_del_favorita">Removida das Favoritas</string>
 </resources>

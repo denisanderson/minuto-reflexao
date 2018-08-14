@@ -1,15 +1,20 @@
 package com.denis.minutodereflexao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.provider.BaseColumns;
 import android.util.Log;
+import android.view.ViewDebug;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
+
 import static com.denis.minutodereflexao.DbHelper.DATABASE_NAME;
 import static com.denis.minutodereflexao.DbHelper.DATABASE_PATH;
 
@@ -21,7 +26,8 @@ public class DbAccess {
     public static final String COLUNA_TITULO = "titulo";
     public static final String COLUNA_TEXTO = "texto";
     public static final String COLUNA_AUTOR = "autor";
-    public static final String[] PROJECTION_TODAS_COLUNAS = {COLUNA_ID, COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR};
+    public static final String COLUNA_FAVORITO = "favorito";
+    public static final String[] PROJECTION_TODAS_COLUNAS = {COLUNA_ID, COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR, COLUNA_FAVORITO};
 
     private final static String LOG_TAG = "DbAccess";
     private static DbAccess instance;
@@ -29,13 +35,8 @@ public class DbAccess {
     private SQLiteDatabase mDatabase;
     private Cursor mCursor;
 
-    /**
-     * Construtor da classe
-     *
-     * @param context
-     */
     private DbAccess(Context context) {
-        Log.i(LOG_TAG, "Executa contrutor DbAccess");
+        Log.i(LOG_TAG, "Executa construtor DbAccess");
         mDbHelper = new DbHelper(context);
     }
 
@@ -54,7 +55,7 @@ public class DbAccess {
     }
 
     /**
-     * Abre uma conexão com o banco de dados
+     * Abre uma conexão de leitura com o banco de dados
      */
     public void openRead() {
         Log.i(LOG_TAG, "getReadableDatabase()");
@@ -62,7 +63,7 @@ public class DbAccess {
     }
 
     /**
-     * Abre uma conexão com o banco de dados
+     * Abre uma conexão de escrita com o banco de dados
      */
     public void openWrite() {
         Log.i(LOG_TAG, "getWritableDatabase()");
@@ -80,17 +81,18 @@ public class DbAccess {
     }
 
     /**
-     * Consulta todos os dados das colunas especificadas em strProjetion
+     * Consulta todos os dados das colunas especificadas em strProjection
      *
      * @return Um cursor com o resultado
      */
+/*
     public Cursor getTodasMensagens() {
 
         try {
             Log.i(LOG_TAG, "Query Todas as mensagens");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
-                    null, // Criterios de pesquisa WHERE
+                    null, // Critérios de pesquisa WHERE
                     null, // argumentos do WHERE
                     null, // Group By
                     null, // Having
@@ -101,9 +103,10 @@ public class DbAccess {
             return mCursor;
         }
     }
+*/
 
     /**
-     * Consulta aleatória na tabela. Returna 1 resultado.
+     * Consulta aleatoria na tabela. Retorna 1 resultado.
      *
      * @return Um cursor com o resultado
      */
@@ -116,13 +119,14 @@ public class DbAccess {
             Log.i(LOG_TAG, "Query Mensagem Aleatoria iniciou");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
-                    null, // Criterios de pesquisa WHERE
+                    null, // Critérios de pesquisa WHERE
                     null, // argumentos do WHERE
                     null, // Group By
                     null, // Having
                     strOrderBy, // Order By
                     strLimit); // Limit
         } catch (Exception e) {
+            Log.i(LOG_TAG, "Registrou a seguinte exceção:");
             Log.i(LOG_TAG, e.getMessage());
         } finally {
             Log.i(LOG_TAG, "Query Mensagem Aleatoria terminou");
@@ -153,9 +157,37 @@ public class DbAccess {
         return checkDB != null ? true : false;
     }
 
+    public Integer atualizaCampoFavorito(int intId, String strValor) {
+
+        // Valores a atualizar
+        ContentValues valores = new ContentValues();
+        valores.put(COLUNA_FAVORITO, strValor);
+
+        // Qual linha a alterar (cláusula WHERE)
+        String strSelection = COLUNA_ID + " = ?";
+        String[] strSelectionArgs = {Objects.toString(intId)};
+
+        // Registrar quantidade de linhas atualizadas após a atualização
+        int linhasAtualizadas = 0;
+
+        try {
+            Log.i(LOG_TAG, "Submetendo update: (" + TABELA_MENSAGEM + ", " + valores + ", " + strSelection + ", " + Objects.toString(intId) + ")");
+            linhasAtualizadas = mDatabase.update(TABELA_MENSAGEM, //Nome da tabela
+                    valores, //Valores a atualizar
+                    strSelection, //WHERE
+                    strSelectionArgs); // argumentos do WHERE
+        } catch (Exception e) {
+            Log.i(LOG_TAG, "Registrou a seguinte exceção:");
+            Log.i(LOG_TAG, e.getMessage());
+        }
+        Log.i(LOG_TAG, "Qtde. de registros atualizados: " + linhasAtualizadas);
+        return linhasAtualizadas;
+    }
+
     /**
      * Copia Banco de Dados da pasta assets/databases
      */
+/*
     public void copiaDatabase(Context context) {
         try {
             InputStream mInput = context.getAssets().open(DATABASE_NAME);
@@ -169,11 +201,12 @@ public class DbAccess {
             mOutput.flush();
             mOutput.close();
             mInput.close();
-            Log.i(LOG_TAG, "Cópia do arquivo concluída");
+            Log.i(LOG_TAG, "Copia do arquivo concluida");
         } catch (IOException e) {
             Log.i(LOG_TAG, "Erro copiando o arquivo de banco de dados: " + e.getCause());
             throw new Error("Ocorreu um erro copiando o arquivo de banco de dados: " + e.getMessage());
         }
     }
+*/
 
 }
