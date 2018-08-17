@@ -184,6 +184,30 @@ public class DbAccess {
         return linhasAtualizadas;
     }
 
+    public Cursor getMensagensFavoritas() {
+
+        String strSelection = COLUNA_FAVORITO + " = 1";
+
+        try {
+            Log.i(LOG_TAG, "Query Mensagens Favoritas iniciou");
+            mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
+                    PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
+                    strSelection, // Critérios de pesquisa WHERE
+                    null, // argumentos do WHERE
+                    null, // Group By
+                    null, // Having
+                    null, // Order By
+                    null); // Limit
+        } catch (Exception e) {
+            Log.i(LOG_TAG, "Registrou a seguinte exceção:");
+            Log.i(LOG_TAG, e.getMessage());
+        } finally {
+            Log.i(LOG_TAG, "Query Mensagens Favoritas terminou");
+            return mCursor;
+        }
+
+    }
+
     /**
      * Copia Banco de Dados da pasta assets/databases
      */

@@ -26,4 +26,7 @@
     <!--Texto da mensagem Toast quando apertar no botão de favoritos-->
     <string name="toast_msg_add_favorita">Incluída nas Favoritas</string>
     <string name="toast_msg_del_favorita">Removida das Favoritas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -45,12 +45,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Monta o menu de navegação
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton btnSorteia = findViewById(R.id.fab_sorteia);
         btnSorteia.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(LOG_TAG, "Clicou no botão para remover dos favoritos");
                 } else {
                     if (TextUtils.isEmpty(mTxtTexto.getText().toString())) {
-                        mostraMsgCentralizada(R.string.toast_sem_msg_share);
+                        mostraMsgCentralizada(R.string.toast_sem_msg_favorita);
                         return false;
                     } else {
                         item.setIcon(R.drawable.ic_favorite_checked_white_24dp);
