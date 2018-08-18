@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cyan 300 -->
+    <color name="color_accent">#4DD0E1</color>
+    <!-- Cyan 50 -->
+    <color name="color_background">#E0F7FA</color>
+    <!-- Cyan 300 -->
+    <color name="color_primary">#4DD0E1</color>
+    <!-- Cyan 500 -->
+    <color name="color_primaryDark">#00BCD4</color>
+    <!-- Cyan 50 -->
+    <color name="color_backgroundGradientStart">#E0F7FA</color>
+    <!-- Cyan 100 -->
+    <color name="color_backgroundGradientMiddle">#B2EBF2</color>
+    <!-- Light Blue 600 -->
+    <color name="color_backgroundGradientEnd">#039BE5</color>
+    <!-- Cyan 100 -->
+    <color name="color_textLight">#B2EBF2</color>
+    <!--DE for %87 opacity-->
+    <color name="color_textDarkPrimary">#DE000000</color>
+    <!--8A for %54 opacity-->
+    <color name="color_textDarkSecondary">#8A000000</color>
+    <!--61 for %38 opacity-->
+    <color name="color_textDarkDisabled">#61000000</color>
+<!--
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+-->
+</resources>
