@@ -22,9 +22,4 @@
     <color name="color_textDarkSecondary">#8A000000</color>
     <!--61 for %38 opacity-->
     <color name="color_textDarkDisabled">#61000000</color>
-<!--
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
--->
 </resources>

@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/color_accent</item>
         <item name="colorPrimary">@color/color_primary</item>
@@ -13,6 +13,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:layout_marginTop">@dimen/marginTop_titulo</item>
         <item name="android:padding">@dimen/padding_titulo</item>
         <item name="android:textSize">@dimen/size_titulo</item>
         <item name="android:textColor">@color/color_textDarkSecondary</item>
@@ -22,6 +23,8 @@
     <style name="estilo_texto">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/margin_padrao</item>
+        <item name="android:layout_marginStart">@dimen/margin_padrao</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:padding">@dimen/padding_texto</item>
         <item name="android:textSize">@dimen/size_texto</item>
@@ -36,14 +39,15 @@
         <item name="android:padding">@dimen/padding_texto</item>
         <item name="android:textSize">@dimen/size_autor</item>
         <item name="android:textStyle">italic</item>
-        <item name="android:textColor">@color/color_textLight</item>
+        <item name="android:layout_marginBottom">@dimen/margin_padrao</item>
+        <item name="android:textColor">@color/color_textDarkDisabled</item>
     </style>
 
     <style name="estilo_fab">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">bottom|end</item>
-        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:layout_margin">@dimen/margin_fab</item>
         <!-- Atributo para dar o efeito de botão pressionado -->
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
@@ -53,8 +57,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="Base.ThemeOverlay.AppCompat.Light" />
 
 </resources>
