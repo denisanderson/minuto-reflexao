@@ -37,13 +37,16 @@ public class MainActivity extends AppCompatActivity
     // Declaracao de variaveis
     public static final String PREFS_FILE = "MRPrefs";
     private static final String LOG_TAG = "MainActivity";
-    private ShareActionProvider mShareActionProvider;
     TextView mTxtTitulo;
     TextView mTxtTexto;
     TextView mTxtAutor;
     Cursor mCursor;
     int intIdAnterior;
     boolean mFavChecked = false;
+    NavigationView navigationView;
+    DrawerLayout drawer;
+    Toolbar toolbar = null;
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +71,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Associa as variaveis aos objetos na tela
@@ -170,15 +173,18 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch (id) {
 
-        if (id == R.id.nav_inicio) {
-            // Handle the Inicio action
-        } else if (id == R.id.nav_favorita) {
-
+            case R.id.nav_inicio:
+                Intent inicio = new Intent(this, MainActivity.class);
+                startActivity(inicio);
+                break;
+            case R.id.nav_favorita:
+                Intent fav = new Intent(this, FavoritasActivity.class);
+                startActivity(fav);
+                break;
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
