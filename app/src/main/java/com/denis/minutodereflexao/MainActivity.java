@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            // TODO: Corrigir: Não está atualizando o campo Favorito
             case R.id.action_favorito:
                 Log.i(LOG_TAG, "Clicou Favorito");
                 if (mFavChecked) {

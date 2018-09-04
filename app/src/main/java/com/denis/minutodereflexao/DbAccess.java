@@ -91,7 +91,7 @@ public class DbAccess {
         if (checkDB != null) {
             checkDB.close();
         }
-        return checkDB != null ? true : false;
+        return checkDB != null;
     }
 
     public Integer atualizaCampoFavorito(int intId, String strValor) {
@@ -120,10 +120,12 @@ public class DbAccess {
 
     public Cursor getMensagensFavoritas() {
         String strSelection = COLUNA_FAVORITO + " = 1";
+        String[] strProjection = {COLUNA_ID, COLUNA_TITULO};
+
         try {
             Log.i(LOG_TAG, "Query Mensagens Favoritas iniciou");
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
-                    PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
+                    strProjection, // Retorna o ID e titulo da mensagem
                     strSelection, // Critérios de pesquisa WHERE
                     null, // argumentos do WHERE
                     null, // Group By

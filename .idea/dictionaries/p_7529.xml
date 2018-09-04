@@ -25,6 +25,7 @@
       <w>baixo</w>
       <w>banco</w>
       <w>barra</w>
+      <w>branco</w>
       <w>buscando</w>
       <w>buscar</w>
       <w>centralizada</w>
@@ -33,6 +34,7 @@
       <w>coluna</w>
       <w>colunas</w>
       <w>compartilhar</w>
+      <w>configurando</w>
       <w>constantes</w>
       <w>construtor</w>
       <w>consulta</w>
@@ -41,12 +43,15 @@
       <w>copiando</w>
       <w>cria</w>
       <w>cujo</w>
+      <w>código</w>
       <w>dados</w>
+      <w>dataset</w>
       <w>declaracao</w>
       <w>dependendo</w>
       <w>diferente</w>
       <w>efeito</w>
       <w>encontrado</w>
+      <w>entre</w>
       <w>erro</w>
       <w>escrever</w>
       <w>escrita</w>
@@ -65,18 +70,24 @@
       <w>identifica</w>
       <w>incluir</w>
       <w>informado</w>
+      <w>inicia</w>
       <w>inicializa</w>
       <w>iniciou</w>
       <w>leitura</w>
       <w>linha</w>
       <w>linhas</w>
+      <w>lista</w>
+      <w>melhor</w>
       <w>mensagen</w>
       <w>mensagens</w>
       <w>mesmo</w>
       <w>mostra</w>
       <w>mudar</w>
+      <w>novo</w>
       <w>objeto</w>
       <w>objetos</w>
+      <w>obtem</w>
+      <w>obter</w>
       <w>ocorreu</w>
       <w>padrao</w>
       <w>parametro</w>
@@ -95,6 +106,8 @@
       <w>removida</w>
       <w>resultado</w>
       <w>retorna</w>
+      <w>retornar</w>
+      <w>retornou</w>
       <w>rotina</w>
       <w>seguinte</w>
       <w>snackbar</w>
@@ -111,6 +124,7 @@
       <w>valores</w>
       <w>verifica</w>
       <w>verificar</w>
+      <w>visualização</w>
     </words>
   </dictionary>
 </component>
