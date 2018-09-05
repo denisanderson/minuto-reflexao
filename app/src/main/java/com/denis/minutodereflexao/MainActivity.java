@@ -138,13 +138,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
-            // TODO: Corrigir: Não está atualizando o campo Favorito
             case R.id.action_favorito:
                 Log.i(LOG_TAG, "Clicou Favorito");
                 if (mFavChecked) {
                     item.setIcon(R.mipmap.ic_favorite_unchecked_white);
                     mFavChecked = false;
-                    //atualizaFavorito(mFavChecked);
+                    atualizaFavorito(mFavChecked);
                     Toast.makeText(MainActivity.this, R.string.toast_msg_del_favorita, Toast.LENGTH_SHORT).show();
                     Log.i(LOG_TAG, "Clicou no botão para remover dos favoritos");
                 } else {
@@ -154,7 +153,7 @@ public class MainActivity extends AppCompatActivity
                     } else {
                         item.setIcon(R.mipmap.ic_favorite_checked_white);
                         mFavChecked = true;
-                        //atualizaFavorito(mFavChecked);
+                        atualizaFavorito(mFavChecked);
                         Toast.makeText(MainActivity.this, R.string.toast_msg_add_favorita, Toast.LENGTH_SHORT).show();
                         Log.i(LOG_TAG, "Clicou no botão para incluir nos favoritos");
                     }
@@ -290,6 +289,25 @@ public class MainActivity extends AppCompatActivity
         }
 
         intIdAnterior = intIdAtual;
+        mDbAccess.close();
+    }
+
+    private void atualizaFavorito(Boolean bFavChecked) {
+        DbAccess mDbAccess = DbAccess.getInstance(this);
+        mDbAccess.openWrite();
+
+        //Registra quantidade de registros atualizados após comando
+        int intResultado;
+
+        if (bFavChecked) {
+            intResultado = mDbAccess.atualizaCampoFavorito(intIdAnterior, "1");
+        } else {
+            intResultado = mDbAccess.atualizaCampoFavorito(intIdAnterior, "0");
+        }
+
+        Log.i(LOG_TAG, "Registros atualizados no BD: " + intResultado);
+        Toast.makeText(this, intResultado + " registro atualizado", Toast.LENGTH_SHORT).show();
+
         mDbAccess.close();
     }
 
