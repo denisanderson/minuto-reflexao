@@ -15,19 +15,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TODO: Melhorar estilo da fonte -->
         <TextView
             android:id="@+id/line_txt_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Titulo da mensagem" />
+            android:textSize="@dimen/size_texto" />
 
         <ImageView
             android:id="@+id/line_img_favorita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            android:contentDescription="@string/content_description_img_favorita" />
 
     </RelativeLayout>
 

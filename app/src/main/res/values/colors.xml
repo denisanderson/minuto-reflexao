@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Cyan 300 -->
-    <color name="color_accent">#4DD0E1</color>
+    <color name="color_accent">#4dd0e1</color>
     <!-- Cyan 50 -->
     <color name="color_background">#E0F7FA</color>
     <!-- Cyan 300 -->
     <color name="color_primary">#4DD0E1</color>
     <!-- Cyan 500 -->
-    <color name="color_primaryDark">#00BCD4</color>
+    <color name="color_primaryDark">#24d5ec</color>
     <!-- Cyan 50 -->
     <color name="color_backgroundGradientStart">#E0F7FA</color>
     <!-- Cyan 100 -->

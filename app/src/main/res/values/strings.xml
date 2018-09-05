@@ -20,4 +20,5 @@
     <!--Texto da mensagem Toast quando tentar ação e não há mensagem na tela-->
     <string name="toast_sem_msg_share">Não há mensagem na tela para compartilhar</string>
     <string name="toast_sem_msg_favorita">Não há mensagem na tela para favoritar</string>
+    <string name="content_description_img_favorita">Imagem de um coração para representar mensagem selecionada como favorita</string>
 </resources>
