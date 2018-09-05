@@ -12,6 +12,8 @@
     android:paddingTop="@dimen/margin_activity_vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+    <!-- TODO: Colocar nome da aplicação no Nav Header. -->
+    <!-- TODO: Colocar nome do usuário no Nav Header, abaixo do nome do App. -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
