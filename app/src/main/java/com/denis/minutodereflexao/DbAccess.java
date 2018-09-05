@@ -15,13 +15,13 @@ import static com.denis.minutodereflexao.DbHelper.DATABASE_PATH;
 
 public class DbAccess {
 
-    // Constantes para schema da tabela MENSAGEM
-    private static final String TABELA_MENSAGEM = "mensagem";
     public static final String COLUNA_ID = BaseColumns._ID;
     public static final String COLUNA_TITULO = "titulo";
     public static final String COLUNA_TEXTO = "texto";
     public static final String COLUNA_AUTOR = "autor";
     public static final String COLUNA_FAVORITO = "favorito";
+    // Constantes para schema da tabela MENSAGEM
+    private static final String TABELA_MENSAGEM = "mensagem";
     private static final String[] PROJECTION_TODAS_COLUNAS = {COLUNA_ID, COLUNA_TITULO, COLUNA_TEXTO, COLUNA_AUTOR, COLUNA_FAVORITO};
 
     private final static String LOG_TAG = "DbAccess";

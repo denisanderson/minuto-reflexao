@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
     // Declaracao de variaveis
     public static final String PREFS_FILE = "MRPrefs";
-    private static final String LOG_TAG = "MainActivity";
+    private static final String LOG_TAG = "Main";
     TextView mTxtTitulo;
     TextView mTxtTexto;
     TextView mTxtAutor;
@@ -164,8 +164,6 @@ public class MainActivity extends AppCompatActivity
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
     }
@@ -208,14 +206,11 @@ public class MainActivity extends AppCompatActivity
         toast.show();
     }
 
-    /**
-     * Verifica se a versão do banco de dados informado no App
-     * é o mesmo registrado no SharedPreferences no aparelho
-     * Se diferente, apaga o DB local para permitir copia da nova versão
-     */
     private void verificaDbUpdate() {
         SharedPreferences sharedPref = getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
         int dbVersion = sharedPref.getInt(getString(R.string.shared_prefs_db_version), 0); // Retorna 0 se o valor não existir
+
+        // TODO: Revisar rotina para não remover favoritos ao atualizar BD
         if (dbVersion != DbHelper.DATABASE_VERSION) {
             Log.i(LOG_TAG, "PREFS. " + dbVersion + " DATABASE_VERSION " + DbHelper.DATABASE_VERSION);
             apagaDatabase();
@@ -223,9 +218,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * Se o arquivo de banco de dados existir, o apaga.
-     */
     private void apagaDatabase() {
         DbAccess mDbAccess = DbAccess.getInstance(this);
         if (mDbAccess.checkDataBase()) {

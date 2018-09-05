@@ -3,6 +3,7 @@ package com.denis.minutodereflexao;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,10 +20,9 @@ import android.view.MenuItem;
 public class FavoritasActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String LOG_TAG = "FavoritasActivity";
-    NavigationView navigationView;
-    DrawerLayout drawer;
-    Toolbar toolbar = null;
+    private static final String LOG_TAG = "Favoritas";
+    NavigationView mNavigationView;
+    DrawerLayout mDrawer;
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
@@ -35,18 +35,14 @@ public class FavoritasActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
+        mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        // mRecyclerView.setHasFixedSize(true);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         mRecyclerView = findViewById(R.id.recycler_view_favoritas);
         mLayoutManager = new LinearLayoutManager(this);
@@ -54,21 +50,21 @@ public class FavoritasActivity extends AppCompatActivity
         // Configurando um divider entre linhas, para uma melhor visualização.
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        mAdapter = new MsgAdapter(obtemMensagensFavoritas());
+        mAdapter = new MsgCursorAdapter(this, obtemMensagensFavoritas());
         mRecyclerView.setAdapter(mAdapter);
     }
 
     private Cursor obtemMensagensFavoritas() {
-        DbAccess mDbAccess = DbAccess.getInstance(this);
-        mDbAccess.openRead();
+        DbAccess dbaccess = DbAccess.getInstance(this);
+        dbaccess.openRead();
 
         Log.i(LOG_TAG, "Inicia método para obter mensagens favoritas");
-        Cursor mCursor = mDbAccess.getMensagensFavoritas();
-        mCursor.moveToFirst();
-        Log.i(LOG_TAG, "Query retornou " + mCursor.getCount() + " registros");
+        Cursor cursor = dbaccess.getMensagensFavoritas();
+        cursor.moveToFirst();
+        Log.i(LOG_TAG, "Query retornou " + cursor.getCount() + " registros");
 
-        mDbAccess.close();
-        return mCursor;
+        dbaccess.close();
+        return cursor;
     }
 
     @Override
@@ -83,7 +79,6 @@ public class FavoritasActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -107,8 +102,7 @@ public class FavoritasActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
 
