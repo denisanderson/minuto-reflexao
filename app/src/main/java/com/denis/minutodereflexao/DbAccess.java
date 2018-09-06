@@ -118,7 +118,7 @@ public class DbAccess {
         return linhasAtualizadas;
     }
 
-    public Cursor getMensagensFavoritas() {
+    public Cursor obtemListaMsgsFavoritas() {
         String strSelection = COLUNA_FAVORITO + " = 1";
         String[] strProjection = {COLUNA_ID, COLUNA_TITULO};
 
@@ -170,7 +170,7 @@ public class DbAccess {
      * @return Um cursor com uma mensagem cujo ID foi informado
      * como parametro
      */
-    public Cursor getMsgFavorita(int intId) {
+    public Cursor obtemMsgFavorita(int intId) {
         // Qual mensagem a buscar (cláusula WHERE)
         String strSelection = COLUNA_ID + " = ?";
         String[] strSelectionArgs = {Objects.toString(intId)};

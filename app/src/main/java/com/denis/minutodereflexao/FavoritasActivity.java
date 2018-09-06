@@ -59,7 +59,7 @@ public class FavoritasActivity extends AppCompatActivity
         dbaccess.openRead();
 
         Log.i(LOG_TAG, "Inicia método para obter mensagens favoritas");
-        Cursor cursor = dbaccess.getMensagensFavoritas();
+        Cursor cursor = dbaccess.obtemListaMsgsFavoritas();
         cursor.moveToFirst();
         Log.i(LOG_TAG, "Query retornou " + cursor.getCount() + " registros");
 

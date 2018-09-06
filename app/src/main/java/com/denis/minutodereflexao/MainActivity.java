@@ -34,18 +34,17 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    // Declaracao de variaveis
+    // Declaracao de variaveis globais
     public static final String PREFS_FILE = "MRPrefs";
     private static final String LOG_TAG = "Main";
     TextView mTxtTitulo;
     TextView mTxtTexto;
     TextView mTxtAutor;
     Cursor mCursor;
-    int intIdAnterior;
+    int mIdAnterior;
     boolean mFavChecked = false;
-    NavigationView navigationView;
-    DrawerLayout drawer;
-    Toolbar toolbar = null;
+    NavigationView mNavigationView;
+    DrawerLayout mDrawer;
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -71,14 +70,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        drawer = findViewById(R.id.drawer_layout);
+        mDrawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         // Associa as variaveis aos objetos na tela
         mTxtTitulo = findViewById(R.id.txt_titulo);
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         mTxtAutor = findViewById(R.id.txt_autor);
 
         // Inicializa variavel auxiliar para evitar repetição da mensagem
-        intIdAnterior = 0;
+        mIdAnterior = 0;
 
         // Executa rotina para verificar se o banco de dados do app
         // precisa ser atualizado no aparelho
@@ -232,12 +231,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * Atualiza SharedPreferences com o valor da versão atual do banco de dados
-     *
-     * @param sharedPref      Objeto sharedPreferences aberto para alteração
-     * @param databaseVersion Versão do banco de dados para escrever nas Preferências
-     */
     private void atualizaSharedPrefs(SharedPreferences sharedPref, int databaseVersion) {
         SharedPreferences.Editor mEditor = sharedPref.edit();
         mEditor.putInt(getString(R.string.shared_prefs_db_version), databaseVersion);
@@ -246,18 +239,18 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressLint("RestrictedApi")
     private void sorteiaMensagem() {
-        DbAccess mDbAccess = DbAccess.getInstance(this);
-        mDbAccess.openRead();
+        DbAccess dbaccess = DbAccess.getInstance(this);
+        dbaccess.openRead();
 
         Log.i(LOG_TAG, "Executa getMsgAleatoria()");
-        mCursor = mDbAccess.getMsgAleatoria();
+        mCursor = dbaccess.getMsgAleatoria();
 
         mCursor.moveToFirst();
-        Log.i(LOG_TAG, "ID Anterior " + intIdAnterior + " ID Atual " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
-        int intIdAtual = mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID));
-        if (intIdAtual == intIdAnterior) {
+        Log.i(LOG_TAG, "ID Anterior " + mIdAnterior + " ID Atual " + mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID)));
+        int idatual = mCursor.getInt(mCursor.getColumnIndex(DbAccess.COLUNA_ID));
+        if (idatual == mIdAnterior) {
             Log.i(LOG_TAG, "Re-executa getMsgAleatoria()");
-            mCursor = mDbAccess.getMsgAleatoria();
+            mCursor = dbaccess.getMsgAleatoria();
             mCursor.moveToFirst();
         }
 
@@ -280,27 +273,26 @@ public class MainActivity extends AppCompatActivity
             mFavChecked = true;
         }
 
-        intIdAnterior = intIdAtual;
-        mDbAccess.close();
+        mIdAnterior = idatual;
+        dbaccess.close();
     }
 
     private void atualizaFavorito(Boolean bFavChecked) {
-        DbAccess mDbAccess = DbAccess.getInstance(this);
-        mDbAccess.openWrite();
+        DbAccess dbaccess = DbAccess.getInstance(this);
+        dbaccess.openWrite();
 
-        //Registra quantidade de registros atualizados após comando
-        int intResultado;
+        int resultado;
 
         if (bFavChecked) {
-            intResultado = mDbAccess.atualizaCampoFavorito(intIdAnterior, "1");
+            resultado = dbaccess.atualizaCampoFavorito(mIdAnterior, "1");
         } else {
-            intResultado = mDbAccess.atualizaCampoFavorito(intIdAnterior, "0");
+            resultado = dbaccess.atualizaCampoFavorito(mIdAnterior, "0");
         }
 
-        Log.i(LOG_TAG, "Registros atualizados no BD: " + intResultado);
-        Toast.makeText(this, intResultado + " registro atualizado", Toast.LENGTH_SHORT).show();
+        Log.i(LOG_TAG, "Registros atualizados no BD: " + resultado);
+        Toast.makeText(this, resultado + " registro atualizado", Toast.LENGTH_SHORT).show();
 
-        mDbAccess.close();
+        dbaccess.close();
     }
 
 }
