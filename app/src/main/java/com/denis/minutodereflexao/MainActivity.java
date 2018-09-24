@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity
     NavigationView mNavigationView;
     DrawerLayout mDrawer;
     MenuItem mShareItem;
-    ActionMenuItemView mFavoritaItem;
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -114,12 +114,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         // Fetch and store ShareActionProvider
-        mFavoritaItem = findViewById(R.id.action_favorito);
         mShareItem = menu.findItem(R.id.action_share);
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(mShareItem);
 
@@ -144,6 +144,16 @@ public class MainActivity extends AppCompatActivity
         });
         // Return true to display menu
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (mFavChecked) {
+            menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_favorite_checked_white));
+        } else {
+            menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_favorite_unchecked_white));
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -222,7 +232,6 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences sharedPref = getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
         int dbVersion = sharedPref.getInt(getString(R.string.shared_prefs_db_version), 0); // Retorna 0 se o valor não existir
 
-        // TODO: Revisar rotina para não remover favoritos ao atualizar BD
         if (dbVersion != DbHelper.DATABASE_VERSION) {
             Log.i(LOG_TAG, "PREFS. " + dbVersion + " DATABASE_VERSION " + DbHelper.DATABASE_VERSION);
             apagaDatabase();
@@ -324,9 +333,7 @@ public class MainActivity extends AppCompatActivity
         mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
 
         mIdAnterior = Integer.parseInt(id);
-
-        // TODO: Ícone de favorito não está ficando preenchido
-        //mFavoritaItem.setIcon(getResources().getDrawable(R.mipmap.ic_favorite_checked_white));
+        mFavChecked = true;
 
         dbaccess.close();
     }
