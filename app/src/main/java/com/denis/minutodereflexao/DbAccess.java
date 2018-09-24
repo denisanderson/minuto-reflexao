@@ -94,18 +94,18 @@ public class DbAccess {
         return checkDB != null;
     }
 
-    public Integer atualizaCampoFavorito(int intId, String strValor) {
+    public Integer atualizaCampoFavorito(int id, String strValor) {
         // Valores a atualizar
         ContentValues valores = new ContentValues();
         valores.put(COLUNA_FAVORITO, strValor);
         // Qual linha a alterar (cláusula WHERE)
         String strSelection = COLUNA_ID + " = ?";
-        String[] strSelectionArgs = {Objects.toString(intId)};
+        String[] strSelectionArgs = {Objects.toString(id)};
         // Registrar quantidade de linhas atualizadas após a atualização
         int linhasAtualizadas = 0;
 
         try {
-            Log.i(LOG_TAG, "Submetendo update: (" + TABELA_MENSAGEM + ", " + valores + ", " + strSelection + ", " + Objects.toString(intId) + ")");
+            Log.i(LOG_TAG, "Submetendo update: (" + TABELA_MENSAGEM + ", " + valores + ", " + strSelection + ", " + Objects.toString(id) + ")");
             linhasAtualizadas = mDatabase.update(TABELA_MENSAGEM, //Nome da tabela
                     valores, //Valores a atualizar
                     strSelection, //WHERE
@@ -170,12 +170,12 @@ public class DbAccess {
      * @return Um cursor com uma mensagem cujo ID foi informado
      * como parametro
      */
-    public Cursor obtemMsgFavorita(int intId) {
+    public Cursor obtemMsgFavorita(String intId) {
         // Qual mensagem a buscar (cláusula WHERE)
         String strSelection = COLUNA_ID + " = ?";
         String[] strSelectionArgs = {Objects.toString(intId)};
         try {
-            Log.i(LOG_TAG, "Query Mensagen Favorita buscando mensagem com ID: " + intId);
+            Log.i(LOG_TAG, "Query Mensagem Favorita buscando mensagem com ID: " + intId);
             mCursor = mDatabase.query(TABELA_MENSAGEM, //Nome da tabela
                     PROJECTION_TODAS_COLUNAS, // campos para pesquisa. NULL = *
                     strSelection, // Critérios de pesquisa WHERE
@@ -188,7 +188,7 @@ public class DbAccess {
             Log.i(LOG_TAG, "Registrou a seguinte exceção:");
             Log.i(LOG_TAG, e.getMessage());
         } finally {
-            Log.i(LOG_TAG, "Query Mensagem Favorita terminou");
+            Log.i(LOG_TAG, "Query Obter Mensagem Favorita terminou");
             return mCursor;
         }
     }

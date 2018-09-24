@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity
     boolean mFavChecked = false;
     NavigationView mNavigationView;
     DrawerLayout mDrawer;
+    MenuItem mShareItem;
+    ActionMenuItemView mFavoritaItem;
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -97,14 +99,10 @@ public class MainActivity extends AppCompatActivity
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
             String id = intent.getExtras().getString("msgId");
-            Toast.makeText(this, "ID: " + id, Toast.LENGTH_SHORT).show();
-            // TODO: Criar método para obter a mensagem selecionada a partir do ID
-
-            // TODO: Preencher os campos de texto com os dados da mensagem
+            getMsgFavorita(id);
         }
 
     }
-
 
     @Override
     public void onBackPressed() {
@@ -121,11 +119,12 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         // Fetch and store ShareActionProvider
-        MenuItem shareItem = menu.findItem(R.id.action_share);
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+        mFavoritaItem = findViewById(R.id.action_favorito);
+        mShareItem = menu.findItem(R.id.action_share);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(mShareItem);
 
         // Cria Listener para o evento
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        mShareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Log.i(LOG_TAG, "Clicou Share Listener");
@@ -305,6 +304,29 @@ public class MainActivity extends AppCompatActivity
 
         Log.i(LOG_TAG, "Registros atualizados no BD: " + resultado);
         Toast.makeText(this, resultado + " registro atualizado", Toast.LENGTH_SHORT).show();
+
+        dbaccess.close();
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void getMsgFavorita(String id) {
+        DbAccess dbaccess = DbAccess.getInstance(this);
+        dbaccess.openRead();
+
+        Log.i(LOG_TAG, "Executa getMsgFavorita()");
+        Log.i(LOG_TAG, "ID enviado: " + id);
+        mCursor = dbaccess.obtemMsgFavorita(id);
+
+        mCursor.moveToFirst();
+        // Coloca o resultado na tela
+        mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
+        mTxtTexto.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TEXTO)));
+        mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+
+        mIdAnterior = Integer.parseInt(id);
+
+        // TODO: Ícone de favorito não está ficando preenchido
+        //mFavoritaItem.setIcon(getResources().getDrawable(R.mipmap.ic_favorite_checked_white));
 
         dbaccess.close();
     }

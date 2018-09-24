@@ -14,9 +14,6 @@ public class DbHelper extends SQLiteAssetHelper {
     static final String DATABASE_NAME = "mr.db";
     private final static String LOG_TAG = "DbHelper";
 
-    /**
-     * @param context to use to open or create the database
-     */
     DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -28,6 +25,6 @@ public class DbHelper extends SQLiteAssetHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        //TODO: Ao atualizar o BD, manter as mensagens favoritas ja existentes.
     }
 }
