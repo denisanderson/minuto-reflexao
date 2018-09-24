@@ -312,7 +312,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         Log.i(LOG_TAG, "Registros atualizados no BD: " + resultado);
-        Toast.makeText(this, resultado + " registro atualizado", Toast.LENGTH_SHORT).show();
 
         dbaccess.close();
     }
