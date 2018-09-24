@@ -90,7 +90,21 @@ public class MainActivity extends AppCompatActivity
         // Executa rotina para verificar se o banco de dados do app
         // precisa ser atualizado no aparelho
         verificaDbUpdate();
+
+        // Verifica se a tela é aberta a partir da seleção de uma mensagem favorita.
+        // Em caso positivo, a intent recebe o ID da mensagem selecionada e
+        // coloca o texto da mensagem na tela
+        Intent intent = getIntent();
+        if (intent.getExtras() != null) {
+            String id = intent.getExtras().getString("msgId");
+            Toast.makeText(this, "ID: " + id, Toast.LENGTH_SHORT).show();
+            // TODO: Criar método para obter a mensagem selecionada a partir do ID
+
+            // TODO: Preencher os campos de texto com os dados da mensagem
+        }
+
     }
+
 
     @Override
     public void onBackPressed() {

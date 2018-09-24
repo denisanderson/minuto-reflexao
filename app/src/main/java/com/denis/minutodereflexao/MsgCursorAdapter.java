@@ -1,6 +1,7 @@
 package com.denis.minutodereflexao;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MsgCursorAdapter extends RecyclerView.Adapter<MsgCursorAdapter.ViewHolder> {
     private Context mContext;
@@ -42,8 +42,10 @@ public class MsgCursorAdapter extends RecyclerView.Adapter<MsgCursorAdapter.View
         lineHolder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Colocar aqui código para abrir tela com a mensagem completa
-                Toast.makeText(mContext, "ID: " + id + " - " + titulo, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("msgId", id);
+                mContext.startActivity(intent);
+
             }
         });
     }
