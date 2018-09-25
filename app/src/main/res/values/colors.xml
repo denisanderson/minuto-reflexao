@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Cyan 300 -->
-    <color name="color_accent">#4dd0e1</color>
-    <!-- Cyan 50 -->
-    <color name="color_background">#E0F7FA</color>
-    <!-- Cyan 300 -->
-    <color name="color_primary">#4DD0E1</color>
-    <!-- Cyan 500 -->
-    <color name="color_primaryDark">#24d5ec</color>
-    <!-- Cyan 50 -->
-    <color name="color_backgroundGradientStart">#E0F7FA</color>
-    <!-- Cyan 100 -->
-    <color name="color_backgroundGradientMiddle">#B2EBF2</color>
-    <!-- Light Blue 600 -->
-    <color name="color_backgroundGradientEnd">#039BE5</color>
-    <!-- Cyan 100 -->
-    <color name="color_textLight">#B2EBF2</color>
+    <!--
+        &lt;!&ndash; Cyan 300 &ndash;&gt;
+        <color name="color_accent">#4dd0e1</color>
+        &lt;!&ndash; Cyan 50 &ndash;&gt;
+        <color name="color_background">#E0F7FA</color>
+        &lt;!&ndash; Cyan 300 &ndash;&gt;
+        <color name="color_primary">#4DD0E1</color>
+        &lt;!&ndash; Cyan 500 &ndash;&gt;
+        <color name="color_primaryDark">#24d5ec</color>
+        &lt;!&ndash; Cyan 50 &ndash;&gt;
+        <color name="color_backgroundGradientStart">#E0F7FA</color>
+        &lt;!&ndash; Cyan 100 &ndash;&gt;
+        <color name="color_backgroundGradientMiddle">#B2EBF2</color>
+        &lt;!&ndash; Light Blue 600 &ndash;&gt;
+        <color name="color_backgroundGradientEnd">#039BE5</color>
+        &lt;!&ndash; Cyan 100 &ndash;&gt;
+        <color name="color_textLight">#B2EBF2</color>
+    -->
+    <!--
+        &lt;!&ndash; Purple 300 &ndash;&gt;
+        <color name="color_accent">#BA68C8</color>
+        &lt;!&ndash; Purple 50 &ndash;&gt;
+        <color name="color_background">#F3E5F5</color>
+        &lt;!&ndash; Purple 300 &ndash;&gt;
+        <color name="color_primary">#BA68C8</color>
+        &lt;!&ndash; Purple 500 &ndash;&gt;
+        <color name="color_primaryDark">#9C27B0</color>
+        &lt;!&ndash; Purple 50 &ndash;&gt;
+        <color name="color_backgroundGradientStart">#F3E5F5</color>
+        &lt;!&ndash; Purple 100 &ndash;&gt;
+        <color name="color_backgroundGradientMiddle">#E1BEE7</color>
+        &lt;!&ndash; Deep purple 300 &ndash;&gt;
+        <color name="color_backgroundGradientEnd">#9575CD</color>
+        &lt;!&ndash; Purple 100 &ndash;&gt;
+        <color name="color_textLight">#E1BEE7</color>
+    -->
+    <!-- Green 300 -->
+    <color name="color_accent">#81C784</color>
+    <!-- Green 50 -->
+    <color name="color_background">#E8F5E9</color>
+    <!-- Green 300 -->
+    <color name="color_primary">#81C784</color>
+    <!-- Green 500 -->
+    <color name="color_primaryDark">#4CAF50</color>
+    <!-- Green 50 -->
+    <color name="color_backgroundGradientStart">#E8F5E9</color>
+    <!-- Green 100 -->
+    <color name="color_backgroundGradientMiddle">#C8E6C9</color>
+    <!-- Light Green 600 -->
+    <color name="color_backgroundGradientEnd">#7CB342</color>
+    <!-- Green 100 -->
+    <color name="color_textLight">#C8E6C9</color>
     <!--DE for %87 opacity-->
     <color name="color_textDarkPrimary">#DE000000</color>
     <!--8A for %54 opacity-->

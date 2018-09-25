@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         // Em caso positivo, a intent recebe o ID da mensagem selecionada e
         // coloca o texto da mensagem na tela
         Intent intent = getIntent();
-        if (intent.getExtras() != null) {
+        if (intent.getStringExtra("msgId") != null) {
             String id = intent.getExtras().getString("msgId");
             getMsgFavorita(id);
         }
@@ -325,11 +325,17 @@ public class MainActivity extends AppCompatActivity
         Log.i(LOG_TAG, "ID enviado: " + id);
         mCursor = dbaccess.obtemMsgFavorita(id);
 
-        mCursor.moveToFirst();
-        // Coloca o resultado na tela
-        mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
-        mTxtTexto.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TEXTO)));
-        mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+        try {
+            mCursor.moveToFirst();
+        } catch (Exception e) {
+            Log.i(LOG_TAG, "Registrou a seguinte exceção:");
+            Log.i(LOG_TAG, e.getMessage());
+        } finally {
+            // Coloca o resultado na tela
+            mTxtTitulo.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TITULO)));
+            mTxtTexto.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_TEXTO)));
+            mTxtAutor.setText(mCursor.getString(mCursor.getColumnIndex(DbAccess.COLUNA_AUTOR)));
+        }
 
         mIdAnterior = Integer.parseInt(id);
         mFavChecked = true;
