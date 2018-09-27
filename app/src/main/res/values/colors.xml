@@ -55,7 +55,11 @@
     <!--DE for %87 opacity-->
     <color name="color_textDarkPrimary">#DE000000</color>
     <!--8A for %54 opacity-->
-    <color name="color_textDarkSecondary">#8a000000</color>
+    <color name="color_textDarkSecondary">#DE000000</color>
     <!--61 for %38 opacity-->
+    <!--
+        <color name="color_textDarkSecondary">#8a000000</color>
+        &lt;!&ndash;61 for %38 opacity&ndash;&gt;
+    -->
     <color name="color_textDarkDisabled">#61000000</color>
 </resources>

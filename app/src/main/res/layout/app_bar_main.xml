@@ -31,6 +31,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         app:fabSize="normal"
+        android:contentDescription="@string/content_desc_fab"
         app:srcCompat="@mipmap/ic_book_open_page_black" />
 
 </android.support.design.widget.CoordinatorLayout>
