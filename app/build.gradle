@@ -6,8 +6,9 @@ android {
         applicationId "com.denis.minutodereflexao"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 3
-        versionName "3.0"
+        //noinspection AccidentalOctal
+        versionCode 020001
+        versionName "2.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
