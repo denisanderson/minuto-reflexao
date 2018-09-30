@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+<<<<<<< HEAD
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
@@ -12,6 +13,22 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+=======
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.denis.minutodereflexao"
+        minSdkVersion 21
+        targetSdkVersion 28
+        //noinspection AccidentalOctal
+        versionCode 020001
+        versionName "2.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+>>>>>>> versao2
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -20,6 +37,7 @@ android {
 }
 
 dependencies {
+<<<<<<< HEAD
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -30,4 +48,15 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     //compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
     compile files('sqliteassethelper-2.0.1.jar')
+=======
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation 'com.android.support:support-v4:28.0.0-rc01'
+    implementation 'com.android.support:design:28.0.0-rc01'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('sqliteassethelper-2.0.1.jar')
+>>>>>>> versao2
 }

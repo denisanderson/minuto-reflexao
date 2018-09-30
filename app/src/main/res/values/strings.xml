@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <!-- Nome do app -->
     <string name="app_name">Minuto de Reflexão</string>
     <!-- Mensagem de boas vindas -->
@@ -7,4 +8,29 @@
     <string name="shared_prefs_db_version">DB_VERSION</string>
     <string name="send_to">Compartilhar Via</string>
     <string name="toast_sem_msg">Não há mensagem na tela para compartilhar</string>
+=======
+    <string name="app_name">Minuto de Reflexão</string>
+    <string name="navigation_drawer_open">Abrir menu de navegação</string>
+    <string name="navigation_drawer_close">Fechar menu de navegação</string>
+    <string name="nav_option_home">Início</string>
+    <string name="nav_option_favorita">Favoritas</string>
+    <string name="bem_vindo">Pressione o botão abaixo para nova mensagem.\n\nBoa Reflexão!</string>
+    <string name="title_activity_favoritas">Favoritas</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="action_favorito">Favorito</string>
+    <string name="send_to">Compartilhar Via</string>
+
+    <!--Nome da preferencia que guarda o valor do banco de dados-->
+    <string name="shared_prefs_db_version">DB_VERSION</string>
+
+    <!--Texto da mensagem Toast quando apertar no botão de favoritos-->
+    <string name="toast_msg_add_favorita">Incluída nas favoritas</string>
+    <string name="toast_msg_del_favorita">Removida das favoritas</string>
+
+    <!--Texto da mensagem Toast quando tentar ação e não há mensagem na tela-->
+    <string name="toast_sem_msg_share">Não há mensagem na tela para compartilhar</string>
+    <string name="toast_sem_msg_favorita">Não há mensagem na tela para favoritar</string>
+    <string name="content_description_img_favorita">Imagem de um coração para representar mensagem selecionada como favorita</string>
+    <string name="content_desc_fab">Botão redondo com o desenho de um livro aberto, utilizado para gerar nova mensagem na tela.</string>
+>>>>>>> versao2
 </resources>

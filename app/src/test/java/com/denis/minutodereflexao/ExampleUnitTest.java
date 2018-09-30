@@ -11,7 +11,11 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
+<<<<<<< HEAD
     public void addition_isCorrect() throws Exception {
+=======
+    public void addition_isCorrect() {
+>>>>>>> versao2
         assertEquals(4, 2 + 2);
     }
 }
